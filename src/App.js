@@ -12,12 +12,40 @@ const App = () => {
 
   useEffect(() => {
     const getRecipes = async () => {
-      fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&health=alcohol-free
-  
-      `)
-        .then((x) => x.json())
-        .then((y) => setRecipes(y.hits) + console.log(y.hits));
+      try {
+        // fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&health=alcohol-free
+
+        // `)
+        //   .then((x) => x.json())
+        //   .then((y) => setRecipes(y.hits) + console.log(y.hits));
+        const response = await fetch(
+          `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&health=alcohol-free`
+        );
+        const data = await response.json();
+
+        //filter out duplicates
+        const uniqueRecipes = [];
+        const recipeNames = new Set();
+
+        data.hits.forEach((hit) => {
+          const recipeName = hit.recipe.label;
+          if (!recipeNames.has(recipeName)) {
+            recipeNames.add(recipeName);
+            uniqueRecipes.push(hit);
+          }
+        });
+
+        setRecipes(uniqueRecipes);
+        console.log(data.hits);
+        console.log(uniqueRecipes);
+      } catch (error) {
+        console.error("an error has occured", error);
+      }
     };
+    //   //working version
+    //   const data = await response.json();
+    //   setRecipes(data.hits);
+    // };
     getRecipes();
   }, [query]);
 
