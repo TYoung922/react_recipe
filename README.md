@@ -1,3 +1,6 @@
+This is a serach function for an api of recipies. it will take a term that you input and search through the available recipies for matches.
+I have added a function to exclude duplicate recipies. This is a helpful app if you are looking for a recipie that uses specific ingrediants.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
