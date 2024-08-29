@@ -1,18 +1,22 @@
 .recipe {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   box-shadow: 0px 5px 20px rgb(0, 36, 27);
   margin: 20px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   background: white;
   align-items: center;
-  max-width: 25%;
-  min-width: 25%;
+  max-width: 18.44%;
+  min-width: 18.44%;
+  height: 400px;
   padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.ingrediants {
+/* .ingrediants {
   max-height: 150px;
   overflow-y: auto;
-}
+} */
